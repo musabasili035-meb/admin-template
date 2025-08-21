@@ -28,31 +28,70 @@
             <div class="card card-primary">
               <div class="card-header"><h4>Login</h4></div>
 
+              {{-- <div class="form-group">
+    <label for="email">Email</label>
+    <input id="email" 
+           type="email" 
+           class="form-control" 
+           name="email" 
+           value="{{ old('email') }}" 
+           tabindex="1" 
+           required 
+           autofocus>
+
+    @error('email')
+        <code>{{ $message }}</code>
+    @enderror
+</div>
+
+
+<div class="form-group">
+    <label for="password">Password</label>
+    <input id="password" 
+           type="password" 
+           class="form-control" 
+           name="password" 
+           tabindex="2" 
+           required>
+
+    @error('password')
+        <code>{{ $message }}</code>
+    @enderror
+</div> --}} 
+
+
+
               <div class="card-body">
-                <form method="POST" action="#" class="needs-validation" novalidate="">
+                <form method="POST" action="{{ route('login') }}" class="needs-validation" novalidate="">
+                  @csrf
                   <div class="form-group">
                     <label for="email">Email</label>
-                    <input id="email" type="email" class="form-control" name="email" tabindex="1" required autofocus>
-                    <div class="invalid-feedback">
-                      Please fill in your email
-                    </div>
-                  </div>
+                    <input id="email" type="email" class="form-control" name="email" value="{{old('email')}}" tabindex="1" required autofocus>
+                    @if("$errors->has('email')")
+                    <code> {{$errors->first('email')}}</code> 
+                    @endif               
+              </div> 
 
                   <div class="form-group">
                     <div class="d-block">
                     	<label for="password" class="control-label">Password</label>
                       <div class="float-right">
-                        <a href="auth-forgot-password.html" class="text-small">
+                        <a href="{{ route('password.request') }}" class="text-small">
                           Forgot Password?
                         </a>
                       </div>
                     </div>
                     <input id="password" type="password" class="form-control" name="password" tabindex="2" required>
-                    <div class="invalid-feedback">
-                      please fill in your password
-                    </div>
+                   @if("$errors->has('password')")
+                   <code>{{$errors->first('password')}}</code>
+
+
+                   @endif
                   </div>
 
+
+                  
+      
                   <div class="form-group">
                     <div class="custom-control custom-checkbox">
                       <input type="checkbox" name="remember" class="custom-control-input" tabindex="3" id="remember-me">
@@ -60,33 +99,17 @@
                     </div>
                   </div>
 
+
+                  
                   <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
                       Login
                     </button>
                   </div>
                 </form>
-                <div class="text-center mt-4 mb-3">
-                  <div class="text-job text-muted">Login With Social</div>
-                </div>
-                <div class="row sm-gutters">
-                  <div class="col-6">
-                    <a class="btn btn-block btn-social btn-facebook">
-                      <span class="fab fa-facebook"></span> Facebook
-                    </a>
-                  </div>
-                  <div class="col-6">
-                    <a class="btn btn-block btn-social btn-twitter">
-                      <span class="fab fa-twitter"></span> Twitter
-                    </a>
-                  </div>
-                </div>
 
               </div>
-            </div>
-            <div class="mt-5 text-muted text-center">
-              Don't have an account? <a href="auth-register.html">Create One</a>
-            </div>
+       
             <div class="simple-footer">
               Copyright &copy; Stisla 2018
             </div>
@@ -113,7 +136,7 @@
   <!-- Page Specific JS File -->
 </body>
 </html>
-
+ 
 
 
 
@@ -124,15 +147,15 @@
 
     <form method="POST" action="{{ route('login') }}">
         @csrf
-
+{{-- 
         <!-- Email Address -->
         <div>
             <x-input-label for="email" :value="__('Email')" />
             <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
+        </div> --}}
 
-        <!-- Password -->
+        {{-- <!-- Password -->
         <div class="mt-4">
             <x-input-label for="password" :value="__('Password')" />
 
@@ -142,16 +165,16 @@
                             required autocomplete="current-password" />
 
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
+        </div> --}}
 
-        <!-- Remember Me -->
+        {{-- <!-- Remember Me -->
         <div class="block mt-4">
             <label for="remember_me" class="inline-flex items-center">
                 <input id="remember_me" type="checkbox" class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800" name="remember">
                 <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Remember me') }}</span>
             </label>
-        </div>
-
+        </div> --}}
+{{-- 
         <div class="flex items-center justify-end mt-4">
             @if (Route::has('password.request'))
                 <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('password.request') }}">
@@ -164,4 +187,4 @@
             </x-primary-button>
         </div>
     </form>
-</x-guest-layout> --}}
+</x-guest-layout> --}} 
