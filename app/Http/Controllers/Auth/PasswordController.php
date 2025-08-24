@@ -7,6 +7,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
+use Flasher\Laravel\Facade\Flasher;
 
 class PasswordController extends Controller
 {
@@ -23,7 +24,7 @@ class PasswordController extends Controller
         $request->user()->update([
             'password' => Hash::make($validated['password']),
         ]);
-
+        Flasher::addSuccess('Password updated successfully');
         return back()->with('status', 'password-updated');
     }
 }

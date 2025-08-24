@@ -28,40 +28,14 @@
             <div class="card card-primary">
               <div class="card-header"><h4>Login</h4></div>
 
-              {{-- <div class="form-group">
-    <label for="email">Email</label>
-    <input id="email" 
-           type="email" 
-           class="form-control" 
-           name="email" 
-           value="{{ old('email') }}" 
-           tabindex="1" 
-           required 
-           autofocus>
-
-    @error('email')
-        <code>{{ $message }}</code>
-    @enderror
-</div>
-
-
-<div class="form-group">
-    <label for="password">Password</label>
-    <input id="password" 
-           type="password" 
-           class="form-control" 
-           name="password" 
-           tabindex="2" 
-           required>
-
-    @error('password')
-        <code>{{ $message }}</code>
-    @enderror
-</div> --}} 
-
+          
 
 
               <div class="card-body">
+@if(session('status'))
+<p class="text-success">{{session('status')}}</p>
+@endif
+
                 <form method="POST" action="{{ route('login') }}" class="needs-validation" novalidate="">
                   @csrf
                   <div class="form-group">

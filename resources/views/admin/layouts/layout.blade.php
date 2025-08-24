@@ -25,7 +25,7 @@
 
 <body>
   <div id="app">
-</div>iv class="main-wrapper">
+<div class="main-wrapper">
      @include('admin.layouts.sidebar')
 
       <!-- Main Content -->
@@ -72,6 +72,11 @@
   <script src="{{asset('assets/js/page/features-post-create.js')  }}"></script>
   <!-- Page Specific JS File -->
   <script src="{{asset('assets/js/page/forms-advanced-forms.js')  }}"></script>
+  @if (class_exists(\Flasher\Laravel\Flasher::class))
+    {!! \Flasher\Laravel\Flasher::render() !!}
+@endif
+
+
 </body>
 </html>
 
