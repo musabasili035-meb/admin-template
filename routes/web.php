@@ -6,8 +6,21 @@ use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 Route::get('/', function () {
-    return view('welcome');
-    })->name('public.home');
+    return view('frontend.home');
+    });  //->name('public.home');
+
+ Route::get('/newblog', function () {
+    return view('frontend.newblog');
+    });  //->name('public.newblog');
+
+ Route::get('/blog-details', function () {
+    return view('frontend.blog-details');
+    });  //->name('public.newblog');
+
+     Route::get('/portfolio-details', function () {
+    return view('frontend.portfolio-details');
+    });  //->name('public.newblog');
+
 
  
 Route::get('/dashboard',[DashboardController::class,  'index'])->middleware(['auth', 'verified'])->name('dashboard');
